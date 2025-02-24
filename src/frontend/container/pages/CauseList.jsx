@@ -28,7 +28,6 @@ function CauseList() {
 
 
   useEffect(() => {
-    // console.log("Base URL:", import.meta.env.VITE_BASE_POST_URL);
     API.post("/getBenchLocations")
       .then((response) => {
         setBenches(response.data.data);
@@ -43,7 +42,6 @@ function CauseList() {
       bench_location: benchID,
     })
       .then((response) => {
-        // console.log(response);
         setCourts(response.data.data);
       })
       .catch((error) => {
@@ -58,10 +56,6 @@ function CauseList() {
       listing_date: values.date,
     })
       .then(async (response) => {
-        // console.log(response);
-        // console.log(response.data.data[0]);
-        // console.log(response.data.error);
-
         setError(response.data.error);
         setData(response.data.data[0]);
         setLoading(false);
