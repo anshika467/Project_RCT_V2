@@ -6,6 +6,7 @@ import Notices from "./container/pages/Notices";
 import PageNotFound from "./container/pages/PageNotFound";
 import ContactUs from "./container/pages/ContactUs";
 import CauseList from "./container/pages/CauseList";
+import Gallery from "./container/component/Gallery";
 
 function AppRouting() {
   return (
@@ -17,6 +18,7 @@ function AppRouting() {
         <Route path="notices" element={<Notices />}></Route>
         <Route path="contact-us" element={<ContactUs />}></Route>
         <Route path="causelist" element={<CauseList />}></Route>
+        <Route path="gallery" element={<Gallery />}></Route>
         
         <Route path="*" element={<PageNotFound />}></Route>
       </Routes>

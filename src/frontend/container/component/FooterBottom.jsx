@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useSelector } from "react-redux";
 
 function FooterBottom() {
   const [visitorData, setVisitorData] = useState([]);
@@ -42,6 +43,8 @@ function FooterBottom() {
         console.log("Error fetching it: ", error);
       });
   }, []);
+
+  // const nums = useSelector((state) => state.numbers.nums);
 
   return (
     <>
