@@ -1,50 +1,14 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { useSelector } from "react-redux";
+import {
+  useGetFootersQuery,
+  useGetLastUpdateQuery,
+  useGetVisitorsQuery,
+} from "../../../redux/slice/apiSlice";
 
 function FooterBottom() {
-  const [visitorData, setVisitorData] = useState([]);
-  const [lastUpdatedData, setLastUpdatedData] = useState([]);
-  const [footerData, setFooterData] = useState([]);
-  const [error, setError] = useState(false);
 
-  const API = axios.create({
-    baseURL: import.meta.env.VITE_BASE_GET_URL,
-  });
-
-  useEffect(() => {
-    API.get("/getVisitor")
-      .then(function (response) {
-        setVisitorData(response.data);
-        setError(false);
-      })
-      .catch(function (error) {
-        setError(true);
-        console.log(error);
-      });
-
-    API.get("/getlastupdate")
-      .then(function (response) {
-        setLastUpdatedData(response.data);
-        setError(false);
-      })
-      .catch(function (error) {
-        setError(true);
-        console.log("Error fetching it: ", error);
-      });
-
-    API.get("/get-footers/7")
-      .then(function (response) {
-        setFooterData(response.data.data);
-        setError(false);
-      })
-      .catch(function (error) {
-        setError(true);
-        console.log("Error fetching it: ", error);
-      });
-  }, []);
-
-  // const nums = useSelector((state) => state.numbers.nums);
+  const { data: visitorsData, error: visitorsError } = useGetVisitorsQuery();
+  const { data: lastUpdateData, error: lastUpdateError } = useGetLastUpdateQuery();
+  const { data: footerData, error: footerError } = useGetFootersQuery();
 
   return (
     <>
@@ -53,13 +17,13 @@ function FooterBottom() {
           <div class="row">
             <div class="container_footer">
               <div className="footer-details">
-                {error ? (
+                {footerError ? (
                   <div>
                     <h4>No Data Found</h4>
                   </div>
                 ) : (
                   <div>
-                    {footerData.map((data) => {
+                    {footerData?.data.map((data) => {
                       return (
                         <span key={data.id}>
                           <a href="#">{data.title}</a>
@@ -79,10 +43,11 @@ function FooterBottom() {
               <div className="footer-details">
                 <p>
                   Number of Visitors:{" "}
-                  {error ? "No Data Found" : visitorData.data}
+                  {visitorsError ? "No Data Found" : visitorsData?.data}
                 </p>
                 <p>
-                  Site Updated: {error ? "No Data Found" : lastUpdatedData.data}
+                  Site Updated:{" "}
+                  {lastUpdateError ? "No Data Found" : lastUpdateData?.data}
                 </p>
               </div>
             </div>

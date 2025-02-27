@@ -629,6 +629,56 @@ h6 {
 }
 /* MODAL END */
 
+/* GALLERY START */
+
+.gallery-sec {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.gallery-sec a{
+  width: 30%;
+  display: inline-block;
+  margin: 0px 15px 30px 15px;
+  position: relative;
+  cursor: pointer;
+}
+
+.img-details {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: #00000098;
+  color: white;
+}
+
+.img-details h5 {
+  padding: 4px;
+}
+
+.gallery-sec img{
+  width: 100%;
+  height: 250px;
+}
+
+.spinner-gallery {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  height: 100vh;
+}
+
+.viewer-custom > .react-viewer-mask {
+  background: rgba(55, 55, 55, 0.6);
+}
+
+/* GALLERY END */
+
 @media (min-width: 990px) and (max-width: 1380px) {
   .card_sidebar {
     font-size: 14px;

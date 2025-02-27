@@ -6,7 +6,7 @@ import Notices from "./container/pages/Notices";
 import PageNotFound from "./container/pages/PageNotFound";
 import ContactUs from "./container/pages/ContactUs";
 import CauseList from "./container/pages/CauseList";
-import Gallery from "./container/component/Gallery";
+import Gallery from "./container/pages/Gallery";
 
 function AppRouting() {
   return (

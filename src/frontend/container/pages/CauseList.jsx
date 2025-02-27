@@ -6,19 +6,23 @@ import Sidebar from "../component/Sidebar.jsx";
 import { dataLeft } from "../component/sidebar.js";
 import CauseListModal from "../component/CauseListModal.jsx";
 import * as Yup from "yup";
+import { useGetBenchLocationsMutation } from "../../../redux/slice/postApiSlice.js";
 
 function CauseList() {
-  const [benches, setBenches] = useState([]);
+  // const [benches, setBenches] = useState([]);
   const [benchID, setBenchID] = useState(0);
   const [courts, setCourts] = useState([]);
   const [values, setValues] = useState([]);
   const [data, setData] = useState({});
   const [error, setError] = useState("Loading...");
   const [loading, setLoading] = useState(true);
-  
-  const API = axios.create({
-    baseURL: import.meta.env.VITE_BASE_POST_URL,
-  });
+
+  const [getBenchLocations, { data: benchData, error: benchError }] =
+    useGetBenchLocationsMutation();
+
+  useEffect(() => {
+    getBenchLocations();
+  }, [getBenchLocations]);
 
   const validationSchema = Yup.object({
     RCTbenchID: Yup.string().required("RCT Bench is required"),
@@ -26,16 +30,9 @@ function CauseList() {
     date: Yup.string().required("Date is required"),
   });
 
-
-  useEffect(() => {
-    API.post("/getBenchLocations")
-      .then((response) => {
-        setBenches(response.data.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, []);
+  const API = axios.create({
+    baseURL: import.meta.env.VITE_BASE_POST_URL,
+  });
 
   useEffect(() => {
     API.post("/getCourtNos", {
@@ -112,11 +109,12 @@ function CauseList() {
                                         "RCTbenchID",
                                         event.target.value
                                       );
+                                      setFieldValue("courtNum", "");
                                       setBenchID(event.target.value);
                                     }}
                                   >
                                     <option value={0}>Select Bench</option>
-                                    {benches.map((bench) => {
+                                    {benchData?.data.map((bench) => {
                                       return (
                                         <option key={bench.id} value={bench.id}>
                                           {bench.railway_bench_name}

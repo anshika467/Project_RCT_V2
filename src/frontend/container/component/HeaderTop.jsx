@@ -1,5 +1,14 @@
+import { useEffect } from "react";
+import { useGetBenchLocationsMutation } from "../../../redux/slice/postApiSlice";
 
 function HeaderTop() {
+  const [getBenchLocations, { data, error, isLoading }] =
+    useGetBenchLocationsMutation();
+
+  useEffect(() => {
+    getBenchLocations();
+  }, [getBenchLocations]);
+  
   return (
     <>
       <div class="top-area">
@@ -28,10 +37,20 @@ function HeaderTop() {
                     class="form-select search_header text-light"
                     aria-label="Default select example"
                   >
-                    <option defaultValue={"Search Branch"}>Search Branch</option>
-                    <option value="1">Delhi</option>
+                    <option defaultValue={"Search Branch"}>
+                      Search Branch
+                    </option>
+                    {error && <option value="">Error: Fetching Data</option>}
+                    {data?.data.map((bench) => {
+                      return (
+                        <option value={bench.id}>
+                          {bench.railway_bench_name}
+                        </option>
+                      );
+                    })}
+                    {/* <option value="1">Delhi</option>
                     <option value="2">Bangalore</option>
-                    <option value="3">Hyderabad</option>
+                    <option value="3">Hyderabad</option> */}
                   </select>
                 </div>
               </div>
