@@ -8,15 +8,15 @@ function MainSlider() {
 
   return (
     <>
-      <div class="carousel-slider">
-        <div class="c-slider">
+      <div className="carousel-slider">
+        <div className="c-slider">
           {/* Carousel  */}
           <div
             id="carouselExampleSlidesOnly"
-            class="carousel slide"
+            className="carousel slide"
             data-bs-ride="carousel"
           >
-            <div class="carousel-inner">
+            <div className="carousel-inner">
               {error && (
                 <div className="spinner-custom">
                   <h2>Error: Cannot Load Images</h2>
@@ -30,12 +30,12 @@ function MainSlider() {
               {data?.data.map((banner) => (
                 <div
                   key={banner.id}
-                  class="carousel-item active"
+                  className="carousel-item active"
                   data-bs-interval="2000"
                 >
                   <img
                     src={banner.image_url}
-                    class="d-block w-100"
+                    className="d-block w-100"
                     alt="Image_1"
                   />
                 </div>

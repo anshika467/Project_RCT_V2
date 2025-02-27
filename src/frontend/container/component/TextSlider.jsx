@@ -14,8 +14,8 @@ function TextSlider({ flag }) {
         </Marquee>
       ) : (
         <Marquee pauseOnHover={true} play={flag}>
-          {data?.data.map((data) => {
-            return <h5>{data.title}</h5>;
+          {data?.data.map((data, index) => {
+            return <h5 key={index}>{data.title}</h5>;
           })}
         </Marquee>
       )}

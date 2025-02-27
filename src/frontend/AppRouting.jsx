@@ -9,6 +9,7 @@ import CauseList from "./container/pages/CauseList";
 import Gallery from "./container/pages/Gallery";
 
 function AppRouting() {
+  const array=["home", "about-us", "notices", "contact-us", "causelist", "gallery"];
   return (
     <>
       <Routes>

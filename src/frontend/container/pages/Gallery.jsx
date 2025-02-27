@@ -10,7 +10,6 @@ function Gallery() {
   const [visible, setVisible] = useState(false);
   const { data, error, isLoading } = useGetGalleryQuery();
   const [activeID, setActiveID] = useState(0);
-  console.log(data?.data);
 
   return (
     <>

@@ -12,10 +12,10 @@ function FooterBottom() {
 
   return (
     <>
-      <div class="footer">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="container_footer">
+      <div className="footer">
+        <div className="container-fluid">
+          <div className="row">
+            <div className="container_footer">
               <div className="footer-details">
                 {footerError ? (
                   <div>

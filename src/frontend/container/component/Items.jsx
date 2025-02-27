@@ -2,7 +2,7 @@ function Items({ currentItems, itemOffset }) {
   return (
     <>
       <div className="table-responsive border modal-table-custom">
-        <table class="table table-striped table-hover">
+        <table className="table table-striped table-hover">
           <thead>
             <tr className="border-top">
               <th scope="col">S. No</th>
@@ -16,14 +16,14 @@ function Items({ currentItems, itemOffset }) {
             {currentItems &&
               currentItems.map((item, index) => {
                 return (
-                  <tr>
+                  <tr key={index}>
                     <td>{itemOffset + index + 1}</td>
                     <td>{item.title}</td>
                     <td>{item.tender_date}</td>
                     <td>{item.end_date}</td>
                     <td>
                       <a href={item.logo_hidden_images} target="_blank">
-                        <i class="fa-solid fa-file-pdf"></i>
+                        <i className="fa-solid fa-file-pdf"></i>
                       </a>
                     </td>
                   </tr>

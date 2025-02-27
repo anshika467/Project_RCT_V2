@@ -246,6 +246,17 @@ h6 {
   margin-right: 7px;
 }
 
+.search-list-custom {
+  max-height: 200px;
+  overflow-y: scroll;
+  margin-top: 50px;
+  width: 100%;
+}
+
+.search-list-custom li {
+  cursor: pointer;
+}
+
 .nav-item-content h2{
   color: white;
   font-weight: 700;
@@ -264,6 +275,7 @@ h6 {
 .error-message {
   display: flex;
   justify-content: center;
+  margin-bottom: 16px;
 }
 
 .error-message h2 {
@@ -482,6 +494,7 @@ h6 {
   cursor: pointer;
   gap: 12px;
   overflow: hidden;
+  color: black;
 }
 
 .card_sidebar:hover {
