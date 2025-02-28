@@ -66,7 +66,7 @@ function HeaderTop() {
                     <option defaultValue={"Search Branch"}>
                       Search Branch
                     </option>
-                    {isLoading && <option value={""}>Loading Benches</option>}
+                    {isLoading && <option disabled={true} value={""}>Loading Benches</option>}
                     {error && <option value="">Error: Fetching Data</option>}
                     {data?.data.map((bench) => {
                       return (

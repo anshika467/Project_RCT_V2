@@ -431,10 +431,15 @@ h6 {
   background-size: cover;
 }
 
+.spinner {
+  color: black;
+}
+
 .spinner-custom {
   display: flex;
   justify-content: center;
   margin-top: 25%;
+  color: black;
 }
 
 .mid-section {
